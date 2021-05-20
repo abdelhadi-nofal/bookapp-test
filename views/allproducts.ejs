@@ -8,31 +8,35 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <% allproducts.forEach(singleproduct=>{ %>
+    <a href="/allprouducts">ALL PRODUCTS</a><br />
+    <a href="/showedproduct">MY PRODUCTS</a><br />
 
-    <div class="prod">
-      <p><%=singleproduct.name %></p>
-      <p><%=singleproduct.price %></p>
-      <img src="<%=singleproduct.image_link  %> " alt="" />
-      <p><%=singleproduct.description %></p>
+    <div class="grid-css"><% allproducts.forEach(singleproduct=>{ %>
 
-      <form action="/save" method="POST">
-        <input name="name" value="<%=singleproduct.name  %>  " hidden />
-        <input name="price" value="<%=singleproduct.price  %>  " hidden />
-        <input
-          name="image_link"
-          value="<%=singleproduct.image_link  %>  "
-          hidden
-        />
-        <input
-          name="description"
-          value="<%=singleproduct.description  %>  "
-          hidden
-        />
-        <button type="submit">ADD TO MY PRODUCTS</button>
-      </form>
-    </div>
-
-    <% }) %>
+        <div class="prod">
+          <p><%=singleproduct.name %></p>
+          <p><%=singleproduct.price %></p>
+          <img src="<%=singleproduct.image_link  %> " alt="" />
+          <p><%=singleproduct.description %></p>
+    
+          <form action="/save" method="POST">
+            <input name="name" value="<%=singleproduct.name  %>  " hidden />
+            <input name="price" value="<%=singleproduct.price  %>  " hidden />
+            <input
+              name="image_link"
+              value="<%=singleproduct.image_link  %>  "
+              hidden
+            />
+            <input
+              name="description"
+              value="<%=singleproduct.description  %>  "
+              hidden
+            />
+            <button type="submit">ADD TO MY PRODUCTS</button>
+          </form>
+        </div>
+    
+        <% }) %></div>
+    
   </body>
 </html>

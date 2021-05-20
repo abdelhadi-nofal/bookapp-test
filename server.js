@@ -6,11 +6,12 @@ const cors = require("cors");
 const superagent = require("superagent");
 
 const pg = require("pg");
+const client = new pg.Client(process.env.DATABASE_URL);
+// const client = new pg.Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: process.env.DEV_MODE ? false : { rejectUnauthorized: false },
+// });
 
-const client = new pg.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DEV_MODE ? false : { rejectUnauthorized: false },
-});
 const methodOverride = require("method-override");
 
 const server = express();
@@ -104,11 +105,17 @@ function detailHandler(req, res) {
 }
 
 function updateHandler(req, res) {
-  let id = req.params.id;
-  let SQL = `UPDATE makeuptable SET name=$1 price=$2 description=$3 WHERE id=$4; `;
-  let savevalues = [req.body.name, req.body.price, req.body.description];
+  //   let id = req.params.id;
+  let SQL = `UPDATE makeuptable SET name=$1,price=$2,description=$3 WHERE id=$4; `;
+  //   let SQL = `UPDATE makeuptable SET name=$1,price=$2,image_link=$3 WHERE id=$4;`;
+  let savevalues = [
+    req.body.name,
+    req.body.price,
+    req.body.description,
+    req.params.id,
+  ];
   client.query(SQL, savevalues).then(() => {
-    res.redirect(`detail/${id}`);
+    res.redirect(`detail/${req.params.id}`);
   });
 }
 
@@ -126,6 +133,7 @@ client.connect().then(() => {
     console.log(`listening on ${PORT}`);
   });
 });
+
 // server.listen(PORT, () => {
 //   console.log(`LISTENING ON ${PORT}`);
 // });

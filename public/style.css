@@ -5,6 +5,16 @@
 
 .prod {
   background-color: rgb(194, 44, 156);
-  width: 30%;
+  width: 50%;
+  height: 50%;
+}
+
+.prod img {
   height: 30%;
+  width: 30%;
+}
+
+.grid-css {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
