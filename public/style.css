@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+  background-color: rgb(223, 124, 190);
+}
+
+.prod {
+  background-color: rgb(194, 44, 156);
+  width: 30%;
+  height: 30%;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <% allproducts.forEach(singleproduct=>{ %>
+
+    <div class="prod">
+      <p><%=singleproduct.name %></p>
+      <p><%=singleproduct.price %></p>
+      <img src="<%=singleproduct.image_link  %> " alt="" />
+      <p><%=singleproduct.description %></p>
+
+      <form action="/save" method="POST">
+        <input name="name" value="<%=singleproduct.name  %>  " hidden />
+        <input name="price" value="<%=singleproduct.price  %>  " hidden />
+        <input
+          name="image_link"
+          value="<%=singleproduct.image_link  %>  "
+          hidden
+        />
+        <input
+          name="description"
+          value="<%=singleproduct.description  %>  "
+          hidden
+        />
+        <button type="submit">ADD TO MY PRODUCTS</button>
+      </form>
+    </div>
+
+    <% }) %>
+  </body>
+</html>
